@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO FAKE</title>
+    <link href="css/index.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/logo.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114*114" href="img/logo.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+    <script src="js/todolist.js" defer></script>
+
+    <link rel="stylesheet" href="css/chat_style.css">
+</head>
+<body>
+
+<!-- MEMO 헤더 -->
+<header>
+    <h2>TODO FAKE</h2>
+    <div class="b-menu">
+        <div class="b-bun b-bun--top"></div>
+        <div class="b-bun b-bun--mid"></div>
+        <div class="b-bun b-bun--bottom"></div>
+    </div>
+    <nav class="b-nav">
+        <a href="./join.php">
+            <button>가입하기</button>
+        </a>
+        <a href="#">공지사항</a>
+        <a href="#">문의하기</a>
+        <a href="#">설정</a>
+        <a href="#">이용약관</a>
+        <a href="#">개인정보정책</a>
+        <a href="#">오픈소스</a>
+        <a href="#">버전</a>
+        <a href="./login.php">로그인</a>
+        <a href="./logout.php">로그아웃</a>
+    </nav>
+</header>
+
+<!-- MEMO 버거메뉴 -->
+<!-- 클릭시 active class 부여하기 -->
+<div class="menu"><!-- TODO -->
+    <div class="menu-bg"></div>
+    <div class="menu-con"></div>
+</div>
+
+<!-- MEMO 메인 -->
+<main>
+    <div class="con-1 calendar-box">
+        <figure>
+            <span class="cal-hd"> yyyy년 m월</span>
+            <button onclick="prevCalendar()"><</button>
+            <button onclick="nextCalendar()">></button>
+        </figure>
+        <table class="cal-table">
+            <tr>
+                <th>월</th>
+                <th>화</th>
+                <th>수</th>
+                <th>목</th>
+                <th>금</th>
+                <th>토</th>
+                <th>일</th>
+            </tr> 
+        </table>
+    </div>
+    <div class="con-2">
+        <div class="list-hd">
+            <h1>Feed</h1>
+            <span>+</span>
+            <form class="goal-input">
+                <input type="text" placeholder="목표를 입력해주세요" required>
+            </form>
+        </div>
+        <div class="todo-list">
+            <div class="todo-goal" id="challenge">
+                <div class="goal">
+                    오늘의 챌린지
+                    <span class="list-add">+</span>
+                </div>
+                <div class="challenge-modify">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="todo-ul"></ul>
+            </div>
+            <!-- <div class="todo-goal">
+                <div class="goal" id="1">목표1<span class="list-add">+</span></div>
+                form은 list-add 클릭했을때 나타나기
+                <form class="todo-form">
+                    <img src="img/check-ok.png" class="unchecked">
+                    <input class="todo-input" type="text" placeholder="입력">
+                </form>
+                <ul class="todo-ul">
+                    <li>
+                        <img src="img/check-ok.png" class="checked">
+                        <span class="checked">운동하기</span>
+                        <div class="more-btn">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </li>
+                </ul>
+            </div> -->
+            <!-- <div class="todo-goal">
+                <div class="goal" id="2">목표2<span class="list-add">+</span></div>
+                <form class="todo-form">
+                    <img src="img/check-ok.png" class="unchecked">
+                    <input class="todo-input" type="text" placeholder="입력">
+                </form>
+                <ul class="todo-ul">
+                    <li>
+                        <img src="img/check-ok.png" class="unchecked">
+                        <span class="unchecked">비타민먹기</span>
+                        <div class="more-btn">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </li>
+                </ul>
+            </div> -->
+            
+        </div>
+    </div>
+</main>
+<div class="modal-bg">
+    <div class="todo-modal">
+        <div class="todo-modal-icon edit">
+            <span class="material-icons">edit</span>
+            <span>수정</span>
+        </div>
+        <div class="todo-modal-icon pass">
+            <span class="material-icons">next_plan</span>
+            <span>내일하기</span>
+        </div>
+        <div class="todo-modal-icon delete">
+            <span class="material-icons">delete</span>
+            <span>삭제</span>
+        </div>
+    </div>
+</div>
+<div class="modal-bg goalmodal">
+    <div class="todo-modal">
+        <div class="todo-modal-icon edit">
+            <span class="material-icons">edit</span>
+            <span>수정</span>
+        </div>
+        <div class="todo-modal-icon delete">
+            <span class="material-icons">delete</span>
+            <span>삭제</span>
+        </div>
+    </div>
+</div>
+<div class="modal-bg challenge-modal">
+    <div class="todo-modal">
+        수정기능/모달창 닫는 기능 넣어야해요!<br>
+    </div>
+</div>
+
+<!-- chat -->
+<div id="chat_thum">
+    <img src="img/chat_img/1.png" alt="">
+</div>
+
+<div class="wrapper">
+    <div class="user-container">
+        <div class="downClose"></div>
+        <div class="nickname_con">
+            <span class="nickIcon">K</span>
+            <input type="text" id="nickname">
+            <!-- <span class="nickname">kayeong</span> -->
+        </div>
+        <div class="close"></div>
+    </div>
+
+    <div class="display-container">
+        <ul class="chatting-list">
+
+        </ul>
+    </div>
+
+    <div class="input-container">
+        <span>
+            <button class="emoji"></button>
+            <input type="text" class="chatting-input" onkeydown="javascript: if (event.keyCode == 13) {send();}" placeholder="메세지를 남겨주세요...">
+            <button class="send-button"></button>
+        </span>
+    </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/chat.js"></script>
+
+</body>
+</html>
